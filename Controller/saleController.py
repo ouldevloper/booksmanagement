@@ -1,7 +1,7 @@
 # @Author: Abdellah Oulahyane
 # @Date:   2021-03-25 01:03:59
 # @Last Modified by:   Abdellah Oulahyane
-# @Last Modified time: 2021-03-28 23:10:36
+# @Last Modified time: 2021-03-29 02:03:00
 
 from Model.sales import Sales
 
@@ -9,25 +9,44 @@ class saleController:
     def add(self,*args):
             #  =  _
         sale=Sales(*args)
-        return sale.add(sale)
+        try:
+            return sale.add(sale)
+        except  Exception:
+            return None
     
     def update(self,*args):
-        sale=Sales(args)
-        return sale.update(sale)
+        sale=Sales(*args)
+        try:
+            return sale.update(sale)
+        except  Exception:
+            return None
 
-    def delete(self,*args):
-        sale=Sales(args)
-        return sale.delete(sale)
+    def delete(self,id):
+        sale=Sales()
+        sale.id=id
+        try:
+            return sale.delete(sale)
+        except  Exception:
+            return None
     
     def getById(self,id):
         sale=Sales()
         sale.id = id
-        return next(sale.where(sale,{'id':'='}))
+        try:
+            return next(sale.where(sale,{'id':'='}))
+        except  Exception:
+            return None
 
     def getall(self):
         sale=Sales()
-        return sale.where(sale)
+        try:
+            return sale.where(sale)
+        except  Exception:
+            return None
 
     def search(self,value):
         sale=Sales()
-        return sale.like(sale,value)
+        try:
+            return sale.like(sale,value)
+        except  Exception:
+            return None

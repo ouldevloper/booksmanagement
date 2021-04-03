@@ -1,7 +1,7 @@
 # @Author: Abdellah OUlahyane
 # @Date:   2021-03-25 01:03:59
 # @Last Modified by:   Abdellah Oulahyane
-# @Last Modified time: 2021-03-28 22:50:26
+# @Last Modified time: 2021-03-29 01:31:15
 
 import sys
 import os
@@ -20,13 +20,19 @@ class bookController(Controller):
     
     def update(self,*args):
         book=Book(*args)
-        return book.update(book,{'id':'='})
+        try:
+            return book.update(book,{'id':'='})
+        except  Exception:
+            return None
 
     def delete(self,id):
         book=Book()
         book.id = id
-        return book.delete(book,{'id':'='})
-    
+        try:
+            return book.delete(book,{'id':'='})
+        except  Exception:
+            return None
+        
     def getById(self,id):
         book=Book()
         book.id=id
@@ -37,10 +43,16 @@ class bookController(Controller):
     
     def getall(self):
         book = Book()
-        return book.where(book)
+        try:
+            return book.where(book)
+        except  Exception:
+            return None
     
     
     def search(self,value):
         book=Book()
-        return book.like(book,value)
+        try:
+            return book.like(book,value)
+        except  Exception:
+            return None
     

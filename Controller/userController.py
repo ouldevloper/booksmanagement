@@ -1,7 +1,7 @@
 # @Author: Abdellah Oulahyane
 # @Date:   2021-03-25 01:03:59
 # @Last Modified by:   Abdellah Oulahyane
-# @Last Modified time: 2021-03-28 20:39:59
+# @Last Modified time: 2021-03-29 01:35:20
 
 from Model.user import User
 
@@ -10,26 +10,44 @@ class userController:
     def add(self,*args):
             #  =  _
         user=User(*args)
-        return user.add(user)
+        try:
+            return user.add(user)
+        except  Exception:
+            return None
     
     def update(self,*args):
         user=User(*args)
-        return user.update(user,{'id':'='})
+        try:
+            return user.update(user,{'id':'='})
+        except  Exception:
+            return None
 
     def delete(self,id):
         user=User()
         user.id=id
-        return user.delete(user,{'id':'='})
+        try:
+            return user.delete(user,{'id':'='})
+        except  Exception:
+            return None
     
     def getbyId(self,id):
         user=User()
         user.id=id
-        return next(user.where(user,{'id':'='}))
+        try:
+            return next(user.where(user,{'id':'='}))
+        except  Exception:
+            return None
 
     def getall(self):
         user=User()
-        return user.where(user)
+        try:
+            return user.where(user)
+        except  Exception:
+            return None
 
     def search(self,value):
         user=User()
-        return user.like(user,value)
+        try:
+            return user.like(user,value)
+        except  Exception:
+            return None
